@@ -3,7 +3,7 @@ import { Form, Input, Button } from 'antd';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-const FormWrapper = styled.div`
+const FormWrapper = styled(Form)`
     padding: 10px;
 `;
 const ButtonWrapper = styled.div`
