@@ -21,5 +21,5 @@ const UserProfile = ({ setIsLoggedIn }) => {
             <Button onClick={onLogOut}>로그아웃</Button>
         </Card>
     );
-}
+};
 export default UserProfile;

@@ -51,6 +51,6 @@ const LoginForm = ({ setIsLoggedIn }) => {
             </ButtonWrapper>
         </FormWrapper>
     );
-}
+};
 
 export default LoginForm;
