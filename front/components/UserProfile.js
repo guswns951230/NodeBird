@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { Card, Avatar, Button } from 'antd';
 
 const UserProfile = ({ setIsLoggedIn }) => {
+
     const onLogOut = useCallback(() => {
         setIsLoggedIn(false);
     }, []);
