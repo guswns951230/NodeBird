@@ -11,7 +11,7 @@ const PostImages = ({ images }) => {
         setShowImagesZoom(true);
     }, []);
     const onClose = useCallback(() => {
-        setShowImagesZomm(false);
+        setShowImagesZoom(false);
     }, []);
 
     if (images.length === 1) {
