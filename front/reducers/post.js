@@ -5,7 +5,7 @@ export const initialState = {
             id: 1,
             nickname: '강현준'
         },
-        content: '첫 번째 게시글  #해시태그 #익스프레스',
+        content: '첫 번째 게시글 #해시태그 #익스프레스',
         Images: [{
             src: 'https://pds.joins.com/news/component/htmlphoto_mmdata/202001/01/f86957cb-ee94-4611-bc81-a5478ca91f92.jpg',
         }, {
