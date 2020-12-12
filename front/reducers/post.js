@@ -9,19 +9,26 @@ export const initialState = {
         },
         content: '첫 번째 게시글 #해시태그 #익스프레스',
         Images: [{
+            id: shortId.generate(),
             src: 'https://pds.joins.com/news/component/htmlphoto_mmdata/202001/01/f86957cb-ee94-4611-bc81-a5478ca91f92.jpg',
         }, {
+            id: shortId.generate(),
             src: 'https://i.pinimg.com/originals/ca/f3/b6/caf3b69ddbfcbd51b55c7fcbad7ab392.jpg',
         }, {
+            id: shortId.generate(),
             src: 'https://cdnweb01.wikitree.co.kr/webdata/editor/202005/08/img_20200508172536_ccf5402a.webp',
         }],
         Comments: [{
+            id: shortId.generate(),
             User: {
+                id: shortId.generate(),
                 nickname: 'Ryu',
             },
             content: '안녕하세요.'
         }, {
+            id: shortId.generate(),
             User: {
+                id: shortId.generate(),
                 nickname: 'Hoon',
             },
             content: '반갑습니다.',
@@ -31,6 +38,9 @@ export const initialState = {
     addPostLoading: false,
     addPostDone: false,
     addPostError: null,
+    removePostLoading: false,
+    removePostDone: false,
+    removePostError: null,
     addCommentLoading: false,
     addCommentDone: false,
     addCommentError: null,
@@ -39,6 +49,10 @@ export const initialState = {
 export const ADD_POST_REQUEST = 'ADD_POST_REQUEST';
 export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
 export const ADD_POST_FAILURE = 'ADD_POST_FAILURE';
+
+export const REMOVE_POST_REQUEST = 'REMOVE_POST_REQUEST';
+export const REMOVE_POST_SUCCESS = 'REMOVE_POST_SUCCESS';
+export const REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
 
 export const ADD_COMMENT_REQUEST = 'ADD_COMMENT_REQUEST';
 export const ADD_COMMENT_SUCCESS = 'ADD_COMMENT_SUCCESS';
@@ -55,8 +69,8 @@ export const addComment = (data) => ({
 });
 
 const dummyPost = (data) => ({
-    id: shortId.generate(),
-    content: data,
+    id: data.id,
+    content: data.content,
     User: {
         id: 1,
         nickname: '강현준',
@@ -99,6 +113,29 @@ const reducer = (state = initialState, action) => {
                 addPostError: action.error,
             };
 
+        case REMOVE_POST_REQUEST:
+            return {
+                ...state,
+                removePostLoading: true,
+                removePostDone: false,
+                removePostError: null,
+            };
+
+        case REMOVE_POST_SUCCESS:
+            return {
+                ...state,
+                mainPosts: state.mainPosts.filter((v) => v.id !== action.data),
+                removePostLoading: false,
+                removePostDone: true,
+            };
+
+        case REMOVE_POST_FAILURE:
+            return {
+                ...state,
+                removePostLoading: false,
+                removePostError: action.error,
+            };
+
         case ADD_COMMENT_REQUEST:
             return {
                 ...state,
@@ -109,7 +146,7 @@ const reducer = (state = initialState, action) => {
 
         case ADD_COMMENT_SUCCESS: {
             const postIndex = state.mainPosts.findIndex((v) => v.id === action.data.postId);
-            const post = { ...state.mainPost = state.mainPosts[postIndex] };
+            const post = { ...state.mainPosts[postIndex] };
             post.Comments = [dummyComment(action.data.content), ...post.Comments];
             const mainPosts = [...state.mainPosts];
             mainPosts[postIndex] = post;

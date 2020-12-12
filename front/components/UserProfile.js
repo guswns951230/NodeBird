@@ -15,7 +15,7 @@ const UserProfile = () => {
     return (
         <Card
             actions={[
-                <div key="twit">올리기<br />{me.Posts.length}</div>,
+                <div key="twit">게시글<br />{me.Posts.length}</div>,
                 <div key="followings">팔로잉<br />{me.Followings.length}</div>,
                 <div key="followers">팔로워<br />{me.Followers.length}</div>,
             ]}

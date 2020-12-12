@@ -6,7 +6,7 @@ import { addPost } from '../reducers/post';
 import useInput from '../hooks/useInput';
 
 const PostForm = () => {
-    const { imagePaths, addPostDone } = useSelector((state) => state.post);
+    const { imagePaths, addPostDone, addPostLoading } = useSelector((state) => state.post);
     const dispatch = useDispatch();
     const [text, onChangeText, setText] = useInput('');
 
@@ -35,7 +35,7 @@ const PostForm = () => {
             <div>
                 <input type="file" multiple hidden ref={imageInput} />
                 <Button onClick={onClickImageUpload}>이미지 업로드</Button>
-                <Button type="primary" style={{ float: 'right' }} htmlType="submit">올리기</Button>
+                <Button type="primary" loading={addPostLoading} style={{ float: 'right' }} htmlType="submit">올리기</Button>
             </div>
             <div>
                 {imagePaths.map((v) => (
