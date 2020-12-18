@@ -1,7 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const { User } = require('../models');
-const { noExtendLeft } = require('sequelize/types/lib/operators');
 
 const router = express.Router();
 
