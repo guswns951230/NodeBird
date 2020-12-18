@@ -13,6 +13,7 @@ import { ADD_POST_TO_ME, REMOVE_POST_OF_ME } from '../reducers/user';
 function loadPostsAPI(data) {
     return axios.get('/api/posts', data)
 }
+
 function* loadPosts(action) {
     try {
         // const result = yield call(loadPostsAPI, action.data);
@@ -33,6 +34,7 @@ function* loadPosts(action) {
 function addPostAPI(data) {
     return axios.post('/post', { content: data });
 }
+
 function* addPost(action) {
     try {
         const result = yield call(addPostAPI, action.data);
@@ -55,6 +57,7 @@ function* addPost(action) {
 function removePostAPI(data) {
     return axios.delete('/api/post', data)
 }
+
 function* removePost(action) {
     try {
         // const result = yield call(removePostAPI, action.data);
@@ -79,6 +82,7 @@ function* removePost(action) {
 function addCommentAPI(data) {
     return axios.post(`/post/${data.postId}/comment`, data) //POST /post/1/comment
 }
+
 function* addComment(action) {
     try {
         const result = yield call(addCommentAPI, action.data);

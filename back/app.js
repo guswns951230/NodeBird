@@ -20,7 +20,8 @@ db.sequelize.sync()
 passportConfig();
 
 app.use(cors({
-    origin: '*',
+    origin: true,
+    credentials: true,
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
