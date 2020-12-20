@@ -58,15 +58,6 @@ export const UNFOLLOW_FAILURE = 'UNFOLLOW_FAILURE';
 export const ADD_POST_TO_ME = 'ADD_POST_TO_ME';
 export const REMOVE_POST_OF_ME = 'REMOVE_POST_OF_ME';
 
-const dummyUser = (data) => ({
-    ...data,
-    nickname: '강현준',
-    id: 1,
-    Posts: [{ id: 1 }],
-    Followings: [{ nickname: 'RYU' }, { nickname: 'HOON' }, { nickname: 'LEE' }],
-    Followers: [{ nickname: 'RYU' }, { nickname: 'HOON' }, { nickname: 'LEE' }],
-});
-
 // action creator
 export const loginRequestAction = (data) => {
     return {
@@ -192,6 +183,7 @@ const reducer = (state = initialState, action) => {
                 break;
 
             case CHANGE_NICKNAME_SUCCESS:
+                draft.me.nickname = action.data.nickname;
                 draft.changeNicknameLoading = false;
                 draft.changeNicknameDone = true;
                 break;
