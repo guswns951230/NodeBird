@@ -8,13 +8,13 @@ import {
 } from '../reducers/post';
 import { ADD_POST_TO_ME, REMOVE_POST_OF_ME } from '../reducers/user';
 
-function loadPostsAPI(data) {
-    return axios.get('/posts', data);
+function loadPostsAPI() {
+    return axios.get('/posts');
 }
 
-function* loadPosts(action) {
+function* loadPosts() {
     try {
-        const result = yield call(loadPostsAPI, action.data);
+        const result = yield call(loadPostsAPI);
         yield put({
             type: LOAD_POSTS_SUCCESS,
             data: result.data,
